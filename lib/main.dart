@@ -1,4 +1,4 @@
-import 'package:recipes/models/dummy-data.dart';
+import 'package:recipes/models/dummy_data.dart';
 import 'package:recipes/models/meal.dart';
 import 'package:recipes/pages/category_meals_page.dart';
 import 'package:recipes/pages/filters_page.dart';

@@ -1,4 +1,4 @@
-import 'package:recipes/models/dummy-data.dart';
+import 'package:recipes/models/dummy_data.dart';
 import 'package:flutter/material.dart';
 
 class MealDetailPage extends StatelessWidget {
