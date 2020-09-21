@@ -1,3 +1,6 @@
 # Recipes
 
-Online course Flutter project.
+Flutter project developed during an online course. This project contains
+
+* Navigation by named routes
+* Implicit animations
