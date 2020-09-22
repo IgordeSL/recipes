@@ -8,4 +8,4 @@ This project contains:
 * Navigation by named routes
 * Implicit animations
 
-Flutter 1.20.4
+**Flutter 1.20.4**
