@@ -51,30 +51,39 @@ class MealItem extends StatelessWidget {
             meal.title,
             style: Theme.of(context).textTheme.headline6,
           ),
-          leading: Hero(
-            tag: '${meal.id}image',
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.network(
-                meal.imageURL,
-                height: 64,
-                width: 64,
-                fit: BoxFit.cover,
-                loadingBuilder: (ctx, child, progress) {
-                  return progress == null
-                      ? child
-                      : Container(
-                          height: 64,
-                          width: 64,
-                          alignment: Alignment.center,
-                          child: CircularProgressIndicator(
-                            value: progress.expectedTotalBytes != null
-                                ? progress.cumulativeBytesLoaded /
-                                    progress.expectedTotalBytes
-                                : null,
-                          ),
-                        );
-                },
+          leading: SizedBox(
+            height: 64,
+            width: 64,
+            child: Hero(
+              tag: '${meal.id}image',
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  meal.imageURL,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (ctx, child, progress) {
+                    return AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 200),
+                      layoutBuilder: (currentChild, previousChildren) => Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          ...previousChildren,
+                          if (currentChild != null) currentChild,
+                        ],
+                      ),
+                      child: progress == null
+                          ? child
+                          : Center(
+                              child: CircularProgressIndicator(
+                                value: progress.expectedTotalBytes != null
+                                    ? progress.cumulativeBytesLoaded /
+                                        progress.expectedTotalBytes
+                                    : null,
+                              ),
+                            ),
+                    );
+                  },
+                ),
               ),
             ),
           ),
